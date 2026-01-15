@@ -155,10 +155,35 @@
       <li><a class="tag" href="/tags/platform-architecture/">Platform Architecture</a></li>
       <li><a class="tag" href="/tags/ai-enforcement/">AI Enforcement</a></li>
     </ul>
-    
-<h3 class="mb-3"><a href="/work/data-models/"><span>Placeholder — Platform data model documentation system</span></a></h3>
+
+<h3 class="mb-3"><a href="/work/docs-systems/"><span>Documentation Governance at Scale</span></a></h3>
 <ul class="tags">
-  <li><a class="tag" href="/tags/data-models/">Data Models</a></li>
+  <li><a class="tag" href="/tags/documentation-systems/">Documentation Systems</a></li>
+  <li><a class="tag" href="/tags/governance/">Governance</a></li>
+  <li><a class="tag" href="/tags/ai-enforcement/">AI Enforcement</a></li>
+</ul>
+<div class="resume-item d-flex flex-column flex-md-row mb-3">
+  <div class="resume-content " style="width:200px;!important;">
+    <img src="/img/avatar-placeholder.svg" style="max-height:150px;max-width:150px;" />
+  </div>
+  <div class="resume-date">
+    <ul>
+      <li><strong>Business Problem:</strong> Platform documentation spanned multiple editions and teams, creating inconsistent metadata and discoverability gaps that
+      could not be reliably detected or reviewed at scale.</li>
+      <li><strong>Assumptions:</strong> Documentation correctness is a governance responsibility, human review time is constrained, and automated systems must
+      surface high-confidence signals without taking action.</li>
+      <li><strong>Decision:</strong> Determine which documents require human review for edition correctness—and which do not—without reviewing every page.</li>
+      <li><strong>Intervention:</strong> Implemented a contract-driven review system that evaluates documentation metadata in bulk and surfaces only
+      review-worthy violations while remaining silent on compliant content.</li>
+      <li><strong>Results:</strong> Enabled targeted, repeatable governance of edition-specific documentation, improving review efficiency and confidence
+      without changing authoring workflows or increasing coordination cost.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="mb-3"><a href="/work/data-models/"><span>Contract-Driven Standards Enforcement at Scale</span></a></h3>
+<ul class="tags">
+  <!-- <li><a class="tag" href="/tags/data-models/">Data Models</a></li> -->
   <li><a class="tag" href="/tags/documentation-systems/">Documentation Systems</a></li>
   <li><a class="tag" href="/tags/platform-architecture/">Platform Architecture</a></li>
 </ul>
@@ -168,10 +193,16 @@
   </div>
   <div class="resume-date">
     <ul>
-      <li><strong>Problem:</strong> Placeholder — Existing documentation did not reflect actual system behavior, causing integration failures.</li>
-      <li><strong>Constraints:</strong> Placeholder — Multiple upstream teams owned different schema components with no unified governance model.</li>
-      <li><strong>Decisions:</strong> Placeholder — Introduced versioned content architecture with machine-readable metadata for downstream validation.</li>
-      <li><strong>Impact:</strong> Placeholder — Reduced support escalations related to data model misunderstandings across partner integrations.</li>
+      <li><strong>Business Problem:</strong> Platform documentation standards drifted as content scaled, making user-centric quality inconsistent and costly to
+      review manually.</li>
+      <li><strong>Assumptions:</strong> Editorial standards reflect organizational intent, human review does not scale, and automation must surface risk without
+      rewriting content.</li>
+      <li><strong>Decision:</strong> Determine whether documentation meets the user-centric quality bar—or requires targeted
+        review—without increasing editorial workload.</li>
+      <li><strong>Intervention:</strong> Introduced a contract-driven review system that evaluates content against editorial
+        standards and surfaces only high-confidence quality risks.</li>
+      <li><strong>Results:</strong> Enabled stable, repeatable standards enforcement at scale, focusing reviewer effort where
+        it mattered most while preserving publishing velocity.</li>
     </ul>
   </div>
 </div>
@@ -187,10 +218,11 @@
   </div>
   <div class="resume-date">
     <ul>
-      <li><strong>Problem:</strong> Placeholder — Policy documentation lagged behind actual enforcement rules, creating compliance audit gaps.</li>
-      <li><strong>Constraints:</strong> Placeholder — Security team changes required legal review, extending publication cycles significantly.</li>
-      <li><strong>Decisions:</strong> Placeholder — Decoupled policy intent documentation from technical implementation details in separate artifacts.</li>
-      <li><strong>Impact:</strong> Placeholder — Enabled faster iteration on technical docs without triggering full compliance review cycles.</li>
+      <li><strong>Business Problem:</strong> Placeholder — Policy documentation lagged behind actual enforcement rules, creating compliance audit gaps.</li>
+      <li><strong>Assumptions:</strong> Placeholder — Security team changes required legal review, extending publication cycles significantly.</li>
+      <li><strong>Decision:</strong> Placeholder — Decoupled policy intent documentation from technical implementation details in separate artifacts.</li>
+      <li><strong>Intervention:</strong> Placeholder — ... </li>
+      <li><strong>Results:</strong> Placeholder — Enabled faster iteration on technical docs without triggering full compliance review cycles.</li>
     </ul>
   </div>
 </div>
@@ -206,30 +238,11 @@
   </div>
   <div class="resume-date">
     <ul>
-      <li><strong>Problem:</strong> Placeholder — Reference documentation was generated but lacked contextual guidance for common workflows.</li>
-      <li><strong>Constraints:</strong> Placeholder — Engineering teams could not dedicate resources to write conceptual content alongside code.</li>
-      <li><strong>Decisions:</strong> Placeholder — Created templated workflow guides that linked to generated reference content dynamically.</li>
-      <li><strong>Impact:</strong> Placeholder — Increased developer portal engagement and reduced time-to-first-successful-call metrics.</li>
-    </ul>
-  </div>
-</div>
-
-<h3 class="mb-3"><a href="/work/docs-systems/"><span>Placeholder — Cross-team documentation governance framework</span></a></h3>
-<ul class="tags">
-  <li><a class="tag" href="/tags/documentation-systems/">Documentation Systems</a></li>
-  <li><a class="tag" href="/tags/governance/">Governance</a></li>
-  <li><a class="tag" href="/tags/ai-enforcement/">AI Enforcement</a></li>
-</ul>
-<div class="resume-item d-flex flex-column flex-md-row mb-3">
-  <div class="resume-content " style="width:200px;!important;">
-    <img src="/img/avatar-placeholder.svg" style="max-height:150px;max-width:150px;"/>
-  </div>
-  <div class="resume-date">
-    <ul>
-      <li><strong>Problem:</strong> Placeholder — Multiple teams published documentation with inconsistent structure and conflicting terminology.</li>
-      <li><strong>Constraints:</strong> Placeholder — No central documentation authority existed, and teams resisted top-down mandates.</li>
-      <li><strong>Decisions:</strong> Placeholder — Established opt-in governance model with automated linting and style enforcement tooling.</li>
-      <li><strong>Impact:</strong> Placeholder — Achieved consistency across documentation surfaces without requiring organizational restructuring.</li>
+      <li><strong>Business Problem:</strong> Placeholder — Reference documentation was generated but lacked contextual guidance for common workflows.</li>
+      <li><strong>Assumptions:</strong> Placeholder — Engineering teams could not dedicate resources to write conceptual content alongside code.</li>
+      <li><strong>Decision:</strong> Placeholder — Created templated workflow guides that linked to generated reference content dynamically.</li>
+      <li><strong>Intervention:</strong> Placeholder — ... </li>
+      <li><strong>Results:</strong> Placeholder — Increased developer portal engagement and reduced time-to-first-successful-call metrics.</li>
     </ul>
   </div>
 </div>

@@ -76,7 +76,7 @@
     <p>Contract-driven governance system to ensure edition-specific metadata consistency across Real-Time CDP documentation
       at scale.</p>
     
-    <h3 id="problem">Problem</h3>
+    <h3 id="business-problem">Business Problem</h3>
     <p>Real-Time Customer Data Platform documentation spans multiple editions: B2B, B2C, and B2P, each with different feature availability, packaging, and eligibility. At this scale, metadata accuracy is not cosmetic; it directly affects discoverability, trust, and downstream consumption by both humans and AI systems.</p>
     <p>The documentation footprint included:</p>
     <ul>
@@ -94,7 +94,7 @@
       information. When metadata is wrong or incomplete, confidently incorrect answers reach customers and trust erodes.</p>
     <p>This was not a tooling problem. It was a governance problem under scale.</p>
     
-    <h3 id="constraints">Constraints</h3>
+    <h3 id="assumptions">Assumptions</h3>
     <p>Several assumptions shaped the approach from the outset:</p>
     <ul>
       <li>Metadata correctness is a governance responsibility, not an authoring preference</li>
@@ -117,7 +117,7 @@
     </ul>
     <p>Any solution that required behavioral change, increased coordination overhead, or continuous manual triage would fail to scale and would not be adopted.</p>
     
-    <h3 id="decisions">Decisions</h3>
+    <h3 id="decision">Decision</h3>
     <p>The system was designed to support a single governance decision at scale: where human review effort should be applied
       for edition correctness, and where it should not.</p>
     
@@ -139,7 +139,7 @@
       pages that demonstrably require attention, using high-confidence signals and remaining silent when no action is
       required.</p>
     
-    <h4>Intervention</h4>
+    <h3 id="intervention">Intervention</h3>
     <p>The intervention was a governance support system designed to evaluate metadata correctness at scale and surface
       review-worthy signals only. It does not modify documentation, create work items, or attempt to "fix" issues
       automatically.</p>
@@ -170,7 +170,7 @@
       where it is most needed.</p>
     
     <p><strong>System flow (single diagram)</strong></p>
-    <pre><code>Documentation repository
+    <pre><code>    Documentation repository
               ↓
     Edition metadata contract
               ↓
@@ -183,7 +183,7 @@
     <p>By separating detection from action, the system supports governance at scale without introducing workflow disruption
       or false confidence.</p>
     
-    <h3 id="impact">Impact</h3>
+    <h3 id="result">Result</h3>
     <p>The primary outcome of this work was not improved metadata in isolation, but the introduction of a scalable governance capability for edition-specific documentation.</p>
     <p>The system enabled reviewers and platform leadership to:</p>
     <ul>
