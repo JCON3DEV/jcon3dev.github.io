@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Docs Systems</title>
-  <meta property="og:title" content="Docs Systems" />
-  <meta property="og:image" content="/img/avatar-placeholder.svg" />
-  <meta name="description" content="Cross-team documentation governance framework case study.">
-  <meta property="og:description" content="Cross-team documentation governance framework case study." />
+  <title>Documentation Governance at Scale</title>
+  <meta property="og:title" content="Documentation Governance at Scale" />
+  <meta property="og:image" content="/img/jordan-heasman.png" />
+  <meta name="description" content="Contract-driven metadata governance system for Real-Time CDP edition correctness at scale.">
+  <meta property="og:description" content="Contract-driven metadata governance system for Real-Time CDP edition correctness at scale." />
   <meta name="author" content="Jordan Heasman">
   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
   <a class="navbar-brand js-scroll-trigger" href="#page-top">
     <span class="d-block d-lg-none">Jordan Heasman</span>
     <span class="d-none d-lg-block">
-      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/avatar-placeholder.svg" alt="">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/jordan-heasman.png" alt="Jordan Heasman">
     </span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,37 +65,148 @@
       <a href="/work/">Work</a>
     </li>
     <li class="breadcrumb-item active">
-      <span>Docs Systems</span>
+      <span>Documentation Governance at Scale</span>
     </li>
   </ol>
 </nav>
 
 <section class="resume-section p-3 p-lg-5 d-flex d-column">
   <div class="my-auto">
-    <h1 class="mb-0"><span class="text-primary">Docs Systems</span></h1>
-    <p>Placeholder — Cross-team documentation governance framework for a large engineering organization.</p>
+    <h1 class="mb-0"><span class="text-primary">Documentation Governance at Scale</span></h1>
+    <p>Contract-driven governance system to ensure edition-specific metadata consistency across Real-Time CDP documentation
+      at scale.</p>
     
-    <h3 id="problem">Problem</h3>
-    <p>Placeholder — Multiple teams published documentation with inconsistent structure and conflicting terminology. Users encountered different naming conventions, navigation patterns, and content depth across product areas.</p>
-    <p>Placeholder — Documentation quality varied significantly between teams, with no shared standards or review processes.</p>
+    <h3 id="business-problem">Business Problem</h3>
+    <p>Real-Time Customer Data Platform documentation spans multiple editions: B2B, B2C, and B2P, each with different feature availability, packaging, and eligibility. At this scale, metadata accuracy is not cosmetic; it directly affects discoverability, trust, and downstream consumption by both humans and AI systems.</p>
+    <p>The documentation footprint included:</p>
+    <ul>
+      <li>~90 pages scoped specifically to Real-Time CDP</li>
+      <li>~1,970 files across the broader repository</li>
+    </ul>
+    <p>Within that environment, three failure modes were consistently observed:</p>
+    <ul>
+      <li>Missing or incorrect edition badges, causing features to appear available where they were not</li>
+      <li>Inconsistent product metadata across conceptually similar pages</li>
+      <li>Review gaps driven by scale, where full verification of edition correctness was not feasible during normal review cycles</li>
+    </ul>
+    <p>The impact was not limited to internal quality standards. Customers increasingly rely on Adobe AI Assistant to answer
+      product questions, and that capability depends on accurate, consistent documentation metadata to return correct
+      information. When metadata is wrong or incomplete, confidently incorrect answers reach customers and trust erodes.</p>
+    <p>This was not a tooling problem. It was a governance problem under scale.</p>
     
-    <h3 id="constraints">Constraints</h3>
-    <p>Placeholder — No central documentation authority existed, and teams resisted top-down mandates. Each team had different tooling preferences and publishing workflows.</p>
-    <p>Placeholder — Resource constraints meant any governance solution needed to be low-overhead and self-service.</p>
+    <h3 id="assumptions">Assumptions</h3>
+    <p>Several assumptions shaped the approach from the outset:</p>
+    <ul>
+      <li>Metadata correctness is a governance responsibility, not an authoring preference</li>
+      <li>Human review time is the most constrained and expensive resource</li>
+      <li>Automated systems must surface signal, not take action</li>
+      <li>Trust collapses quickly if automation produces noise, false positives, or unreviewed changes</li>
+    </ul>
+    <p>These assumptions were reinforced by hard constraints:</p>
+    <ul>
+      <li>No automated edits to documentation</li>
+      <li>No automatic Jira ticket creation</li>
+      <li>No low-confidence or speculative flags</li>
+      <li>No changes unless a defined metadata contract is violated</li>
+    </ul>
+    <p>Organizationally, additional constraints applied:</p>
+    <ul>
+      <li>There was no mandate to change existing authoring workflows</li>
+      <li>No additional reviewer headcount was available</li>
+      <li>No centralized authority existed to police metadata consistency</li>
+    </ul>
+    <p>Any solution that required behavioral change, increased coordination overhead, or continuous manual triage would fail to scale and would not be adopted.</p>
     
-    <h3 id="decisions">Decisions</h3>
-    <p>Placeholder — Established opt-in governance model with automated linting and style enforcement tooling. Created shared templates and component library that teams could adopt incrementally.</p>
-    <p>Placeholder — Introduced AI-augmented validation pipelines to detect terminology inconsistencies and structural drift across documentation sets.</p>
+    <h3 id="decision">Decision</h3>
+    <p>The system was designed to support a single governance decision at scale: where human review effort should be applied
+      for edition correctness, and where it should not.</p>
     
-    <h3 id="impact">Impact</h3>
-    <p>Placeholder — Achieved consistency across documentation surfaces without requiring organizational restructuring. Team adoption of governance standards increased organically through demonstrated value.</p>
-    <p>Placeholder — User feedback on documentation quality improved significantly after cross-team consistency initiatives.</p>
+    <blockquote>Which documents require human review for edition correctness right now—and which do not—without reviewing
+      every page.</blockquote>
+    
+    <p>Before this, that decision was effectively unavailable. Edition-specific correctness could not be assessed reliably
+      across the corpus without manual sampling and spot checks. Reviewers relied on partial coverage and time-boxed
+      inspection, which made it difficult to reason about risk accumulation across the platform.</p>
+    
+    <p>The risk of inaction was clear:</p>
+    <ul>
+      <li>Incorrect edition attribution would propagate into customer-facing guidance</li>
+      <li>Customers would receive confidently wrong answers when relying on downstream systems</li>
+      <li>Trust in documentation—and by extension the platform—would degrade over time</li>
+    </ul>
+    
+    <p>The goal was not to fix metadata automatically. The goal was to direct reviewers to the smallest possible set of
+      pages that demonstrably require attention, using high-confidence signals and remaining silent when no action is
+      required.</p>
+    
+    <h3 id="intervention">Intervention</h3>
+    <p>The intervention was a governance support system designed to evaluate metadata correctness at scale and surface
+      review-worthy signals only. It does not modify documentation, create work items, or attempt to "fix" issues
+      automatically.</p>
+    
+    <p>The system operates against a defined metadata contract that specifies required edition badges and product metadata
+      for Real-Time Customer Data Platform content. That contract serves as the single source of truth for evaluation.</p>
+    
+    <p>Each documentation run is processed as follows:</p>
+    <ul>
+      <li>Documentation content is scanned in bulk against the metadata contract</li>
+      <li>Edition-specific requirements are evaluated deterministically</li>
+      <li>Signals are produced only when a contract violation is detected</li>
+      <li>Results are filtered to exclude low-confidence or ambiguous cases</li>
+      <li>When no violation is found, the system remains silent</li>
+    </ul>
+    
+    <p>This design produces fewer, higher-confidence signals rather than exhaustive lists of potential issues.</p>
+    
+    <p>The system explicitly avoids:</p>
+    <ul>
+      <li>Automated edits to documentation</li>
+      <li>Automatic Jira ticket creation</li>
+      <li>Broad "linting" or advisory warnings</li>
+      <li>Any output that would require interpretation or follow-up investigation</li>
+    </ul>
+    
+    <p>Human reviewers remain the decision-makers. The system’s role is to narrow the review surface area so effort is spent
+      where it is most needed.</p>
+    
+    <p><strong>System flow (single diagram)</strong></p>
+    <pre><code>    Documentation repository
+              ↓
+    Edition metadata contract
+              ↓
+    Deterministic bulk scan
+              ↓
+    Confidence-gated signals
+              ↓
+    Targeted human review</code></pre>
+    
+    <p>By separating detection from action, the system supports governance at scale without introducing workflow disruption
+      or false confidence.</p>
+    
+    <h3 id="result">Result</h3>
+    <p>The primary outcome of this work was not improved metadata in isolation, but the introduction of a scalable governance capability for edition-specific documentation.</p>
+    <p>The system enabled reviewers and platform leadership to:</p>
+    <ul>
+      <li>Focus human review effort on a small, well-defined subset of documents that demonstrably violate edition requirements</li>
+      <li>Treat silence as a signal of confidence, rather than absence of coverage</li>
+      <li>Reason about metadata risk across the Real-Time CDP documentation set without exhaustive manual inspection</li>
+        <li>Detect consistency issues early, before they propagate into customer-facing guidance and downstream AI responses</li>
+    </ul>
+    <p>Just as importantly, the system established clear operational boundaries:</p>
+    <ul>
+      <li>Automated evaluation without automated action</li>
+      <li>High-confidence signals without background noise</li>
+      <li>Governance support without workflow disruption</li>
+    </ul>
+    <p>This shifted metadata review from a reactive, sample-based activity to a repeatable, contract-driven process that can be rerun as documentation evolves, editions change, or new content is introduced.</p>
+    <p>The result is not faster documentation production, but more reliable decision-making at scale, with human judgment preserved and trust maintained.</p>
     
     <h3>Tags</h3>
     <ul class="tags">
       <li><a class="tag" href="/tags/documentation-systems/">Documentation Systems</a></li>
       <li><a class="tag" href="/tags/governance/">Governance</a></li>
-      <li><a class="tag" href="/tags/ai-enforcement/">AI Enforcement</a></li>
+      <!-- Doesnt exist yet: <li><a class="tag" href="/tags/metadata-governance/">Metadata Governance</a></li> -->
+
     </ul>
     
     <hr>
@@ -105,8 +216,7 @@
 </section>
 
 
-    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
-    
+  
   </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
